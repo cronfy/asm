@@ -1,0 +1,15 @@
+{
+  "name": "cronfy/asm",
+  "license": "BSD-3-Clause",
+  "description": "Legacy code assimilator",
+
+  "require": {
+    "php": ">=5.4.0"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "cronfy\\asm\\": "src/"
+    }
+  }
+}

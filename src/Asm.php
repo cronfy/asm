@@ -25,8 +25,8 @@ class Asm {
 
     public static $vendorDir;
     public static function getVendorDir() {
-        return dirname(__DIR__) . '/../vendor';
-//        return static::$vendorDir ?: dirname(dirname(dirname(__DIR__)));
+//        return dirname(__DIR__) . '/../vendor';
+        return static::$vendorDir ?: dirname(dirname(dirname(__DIR__)));
     }
 
     static protected $_env;

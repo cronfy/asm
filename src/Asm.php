@@ -60,12 +60,31 @@ class Asm {
 
 }
 
-function D()
+/**
+ * Debug function. Prints data and dies.
+ *
+ * To use globally, define global function:
+ *
+ * ```
+ * function D($var = null, $vardump = null) { 'hack: autoload Asm.php --> ' . \cronfy\asm\Asm::$debug; call_user_func_array('\cronfy\asm\D', [$var, $vardump, 1]); }
+ * ```
+ *
+ * Usage example: `D()` or `D($some_var)`
+ *
+ * @param mixed $var data to dump
+ * @param bool $vardump whether to use var_dump, if false then print_r will be used. Default false.
+ * @param int $backtrace_index tuning when called indirectly (e. g. via other debug function)
+ */
+function D($var, $vardump = false, $backtrace_index = 0)
 {
     if (Asm::isDebug()) {
         $backtrace = debug_backtrace();
-        $caller = $backtrace[0];
-        print_r(func_get_args());
+        $caller = $backtrace[$backtrace_index];
+        if ($vardump) {
+            var_dump($var);
+        } else {
+            print_r($var);
+        }
         echo "\n<br>\nAsmDebug in {$caller['file']} line {$caller['line']}";
         die();
     } else {

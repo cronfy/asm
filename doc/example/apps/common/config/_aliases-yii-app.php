@@ -12,12 +12,21 @@
 // or
 //      new yii\web\Application($config);
 
-// Known aliases: @runtime, @webroot
+// Known aliases:
+//     @runtime
+//     @vendor
+//         @bower
+//         @npm
+//     @webroot
 
 // If these aliases were set earlier, they will be reset.
 
 // Thus, these aliases should be confgured in application config.
 
 return [
-    '@runtime' => '@tmp/runtime'
+    '@runtime' => '@tmp/runtime',
+
+    '@vendor' => \cronfy\asm\Asm::getVendorDir(),
+    '@bower' => '@vendor/bower-asset',
+    '@npm'   => '@vendor/npm-asset',
 ];

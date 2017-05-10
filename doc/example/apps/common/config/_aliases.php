@@ -14,8 +14,10 @@ Yii::setAlias('@root', dirname(dirname(dirname(__DIR__))));
 // core
 Yii::setAlias('@var', '@root/var');
 Yii::setAlias('@tmp', '@root/tmp');
+Yii::setAlias('@log', '@root/log');
 Yii::setAlias('@apps', '@root/apps');
 
 // yii apps
 Yii::setAlias('@common', '@apps/common');
-Yii::setAlias('@console', '@apps/console');
+Yii::setAlias('@main', '@apps/main');
+Yii::setAlias('@legacy', '@apps/legacy');

@@ -7,6 +7,9 @@
  */
 
 return [
+    'bootstrap' => ['log'],
+
     'components' => [
+        'log' => require __DIR__ . "/components/log.php"
     ],
 ];

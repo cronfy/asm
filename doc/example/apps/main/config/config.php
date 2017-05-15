@@ -12,7 +12,6 @@ $config = [
     'controllerNamespace' => 'main\controllers',
     'aliases' => require Yii::getAlias('@common/config/_aliases-yii-app.php'),
     'components' => [
-        'db' => require Yii::getAlias('@common/config/_db.php'),
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

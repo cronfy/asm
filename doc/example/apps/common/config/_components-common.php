@@ -10,6 +10,7 @@ return [
     'bootstrap' => ['log'],
 
     'components' => [
-        'log' => require __DIR__ . "/components/log.php"
+        'log' => require __DIR__ . '/components/log.php',
+        'db' => require __DIR__ . '/_db.php'),
     ],
 ];

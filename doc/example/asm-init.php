@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cronfy
- * Date: 11.04.17
- * Time: 19:10
- */
 
 use cronfy\asm\Asm;
 

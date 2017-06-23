@@ -28,9 +28,6 @@ class YLC {
         try {
             Yii::$app->on(\yii\base\Application::EVENT_AFTER_REQUEST, function ($event) {
                 if (in_array(Yii::$app->response->statusCode, [301, 302])) {
-                    if (!$url = Yii::$app->response->headers->get('location')) {
-                        throw new \Exception("Invalid redirect response");
-                    }
                     Yii::$app->params['resultType'] = static::RESULT_YII_REDIRECT;
                 } else {
                     Yii::$app->params['resultType'] = static::RESULT_YII_RESPONSE;
@@ -40,7 +37,7 @@ class YLC {
                 throw $e;
             });
             Yii::$app->run();
-            Yii::$app->params['resultType'] = static::RESULT_YII_RESPONSE;
+            throw new \Exception("Legacy app myst end with exception.");
         } catch (\yii\web\NotFoundHttpException $e) {
             if ($orig_e = $e->getPrevious() and get_class($orig_e) == \yii\base\InvalidRouteException::class) {
                 Yii::$app->params['resultType'] = static::RESULT_YII_NOT_ROUTED;

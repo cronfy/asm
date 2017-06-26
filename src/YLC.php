@@ -2,8 +2,6 @@
 
 namespace cronfy\asm;
 
-use cronfy\ylc\yii\web\Response;
-use cronfy\ylc\yii\web\View;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\UnknownMethodException;
@@ -33,7 +31,7 @@ class YLC {
                     Yii::$app->params['resultType'] = static::RESULT_YII_RESPONSE;
                 }
 
-                $e = new \cronfy\ylc\GoToLegacyException();
+                $e = new \cronfy\asm\GoToLegacyException();
                 throw $e;
             });
             Yii::$app->run();
@@ -45,7 +43,7 @@ class YLC {
                 // Normal NotFound response.
                 Yii::$app->params['resultType'] = static::RESULT_YII_NOT_FOUND;
             }
-        } catch (\cronfy\ylc\GoToLegacyException $e) {
+        } catch (\cronfy\asm\GoToLegacyException $e) {
             if (!isset(Yii::$app->params['resultType'])) {
                 Yii::$app->params['resultType'] = static::RESULT_GO_TO_LEGACY;
             }
@@ -80,26 +78,6 @@ class YLC {
         Url::$urlManager = $prevManager;
 
         return $url;
-    }
-
-    /**
-     * Can be used to manually send cookies.
-     *
-     * When you use Html::csrfMetaTags() in legacy template, Yii will generate CSRF token,
-     * but will not send it, as Yii::$app->response->send() is not called.
-
-     * You can call this method manually to send CSRF token and other cookies before
-     * sending content from legacy.
-     *
-     * @throws InvalidConfigException
-     */
-    public static function sendCookies() {
-        $response = Yii::$app->response;
-        try {
-            $response->sendCookies();
-        } catch (UnknownMethodException $e) {
-            throw new InvalidConfigException("Response::sendCookies() must be public, use " . Response::class . " instead of " . get_class($response));
-        }
     }
 
 }

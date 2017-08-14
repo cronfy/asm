@@ -91,3 +91,19 @@ function D($var, $vardump = false, $backtrace_index = 0)
         die('by D');
     }
 }
+
+function E($var, $vardump = false, $backtrace_index = 0)
+{
+    if (Asm::isDebug()) {
+        $backtrace = debug_backtrace();
+        $caller = $backtrace[$backtrace_index];
+        if ($vardump) {
+            var_dump($var);
+        } else {
+            print_r($var);
+        }
+        echo "\n<br>\nAsmEcho in {$caller['file']} line {$caller['line']}<br>\n";
+    } else {
+        // do not echo
+    }
+}

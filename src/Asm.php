@@ -102,7 +102,7 @@ function E($var, $vardump = false, $backtrace_index = 0)
         } else {
             print_r($var);
         }
-        echo "\n<br>\nAsmEcho in {$caller['file']} line {$caller['line']}<br>\n";
+        echo " <small>AsmEcho in {$caller['file']} line {$caller['line']}</small><br>\n";
     } else {
         // do not echo
     }

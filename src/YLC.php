@@ -63,12 +63,13 @@ class YLC {
      * @return string the generated URL
      * @return string
      */
-    public static function urlToRoute($urlManager, $route, $scheme = null) {
+    public static function urlToRoute($urlManager, $route, $scheme = false) {
         $route = (array) $route;
 
         if (strpos('/', $route[0]) !== 0) {
             // route must be absolute to avoid 'No active controller'
             // exception from Url::normalizeRoute()
+            // (this does not make url itself absolute - $scheme is responsible for it)
             $route[0] = '/' . $route[0];
         }
 

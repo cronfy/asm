@@ -4,10 +4,15 @@ namespace cronfy\asm;
 
 class Asm {
 
+    /**
+     * @deprecated use external env module please
+     */
     public static $debug;
     public static $context;
 
     /**
+     * @deprecated use external env module please
+     *
      * Говорит, находится ли сейчас приложение в режиме разработки. Если нет,
      * то мы на боевом серере.
      *
@@ -24,16 +29,26 @@ class Asm {
     }
 
     public static $vendorDir;
+
+    /**
+     * @deprecated use external env module please
+     */
     public static function getVendorDir() {
 //        return dirname(__DIR__) . '/../vendor';
         return static::$vendorDir ?: dirname(dirname(dirname(__DIR__)));
     }
 
     static protected $_env;
+    /**
+     * @deprecated use external env module please
+     */
     public static function setEnvData($data) {
         static::$_env = $data;
     }
 
+    /**
+     * @deprecated use external env module please
+     */
     public static function getEnv($name, $default = null) {
         if (!isset(static::$_env[$name])) {
             if (null === $default) {
@@ -61,6 +76,8 @@ class Asm {
 }
 
 /**
+ * @deprecated use external debug module please
+ *
  * Debug function. Prints data and dies.
  *
  * To use globally, define global function:
@@ -92,6 +109,9 @@ function D($var, $vardump = false, $backtrace_index = 0)
     }
 }
 
+/**
+ * @deprecated use external debug module please
+ */
 function E($var, $vardump = false, $backtrace_index = 0)
 {
     if (Asm::isDebug()) {
